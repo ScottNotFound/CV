@@ -6,7 +6,7 @@
 %------------------------
 \documentclass[letterpaper,11pt]{article}
 \usepackage{geometry}
-\usepackage{helvet}
+% \usepackage{helvet}
 \usepackage[T1]{fontenc}
 % \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -18,13 +18,36 @@
 % \usepackage[pdftex]{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-\usepackage{fontawesome}
+\usepackage{fontawesome5}
+% \usepackage{academicons}
+% \usepackage{tgbonum}
+\usepackage{tgpagella}
+
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+% \usepackage[sfdefault]{FiraSans}
+
 \usepackage{xstring}
 \usepackage{xcolor}
 \usepackage{etoolbox}
-\usepackage{mhchem}
+\usepackage[version=4]{mhchem}
 \usepackage{tabularx}
-\usepackage[backend=biber,style=chem-acs,articletitle=true,autocite=superscript,maxbibnames=99,sorting=ydnt]{biblatex}
+\usepackage[
+    colorlinks=false,
+    linkcolor=none,
+    filecolor=magenta,      
+    urlcolor=none,
+    % pdfpagemode=FullScreen,
+    hidelinks
+]{hyperref}
+\usepackage[
+    backend=biber,
+    style=chem-acs,
+    articletitle=true,
+    autocite=superscript,
+    maxbibnames=99,
+    sorting=ydnt
+]{biblatex}
     \addbibresource{ref.bib}
     \DeclareFieldFormat[article, unpublished, inbook]{title}{\textbf{#1}\\}
     \DeclareFieldFormat[inbook]{chapter}{\textbf{#1}\\}
@@ -75,7 +98,7 @@ margin=1in,
 footskip=3em
 }
 
-\renewcommand\familydefault{\sfdefault}
+% \renewcommand\familydefault{lmr}
 
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
@@ -142,6 +165,16 @@ footskip=3em
     \end{tabularx}\vspace{-12pt}
 }
 
+\newcommand{\project}[2]{
+    \vspace{-4pt} 
+    \item 
+    \small 
+    \textbf{#1:}
+    {#2 
+        \vspace{-2pt}
+    }
+}
+
 \renewcommand*{\bibfont}{\normalfont\small}
 
 %-------------------------------------------
@@ -150,9 +183,15 @@ footskip=3em
 
 \begin{document}
 
+
 %----------HEADING-----------------
 \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-  \textbf{{\Huge Scott D. Thiel}} & \faicon{envelope} : sthiel@umass.edu\\
+  \textbf{{\Huge Scott D. Thiel}} & 
+    \begin{tabular}{l}
+        \faIcon{envelope} : \href{mailto:sthiel@umass.edu}{sthiel@umass.edu}\\
+        \faIcon{orcid} \normalfont : \href{https://orcid.org/0000-0002-9947-0277}{0000-0002-9947-0277}\\
+        \faIcon{github} : \href{https://github.com/ScottNotFound}{ScottNotFound}\\
+    \end{tabular} 
 \end{tabular*}
 %\vspace{1cm}
 
@@ -165,8 +204,8 @@ footskip=3em
         {University of Massachusetts Amherst}{Amherst, MA}
         {PhD candidate in Chemistry}{Aug. 2019 -- present}
         \begin{itemize}
-            \positionSubItem{Focus:}{Materials, Computational, Solid State, High Pressure}
-            \positionSubItem{Organizations:}{Graduate Chemists Association - Treasurer}
+            \positionSubItem{Focus:}{First-principles Methods, Materials Discovery, Solid-State Chemistry, High-pressure Science}
+            \positionSubItem{Organizations:}{Graduate Chemists Association (Treasurer)}
         \end{itemize}
     \end{itemize}
     
@@ -178,7 +217,7 @@ footskip=3em
         {Dual Bachelor of Science in Computer Science and Chemistry}{Aug. 2015 -- May 2019}
         \begin{itemize}
             \positionSubItem{Concentration/Focus:}{Theory and Algorithms; Polymers and Materials}
-            \positionSubItem{Organizations:}{Rensselaer Center for Open Source - Coordinator, Mentor; HackRPI}
+            \positionSubItem{Organizations:}{Rensselaer Center for Open Source (Coordinator, Mentor); HackRPI (Sponsorship Coordinator)}
         \end{itemize}
     \end{itemize}
 
@@ -189,12 +228,12 @@ footskip=3em
     \begin{itemize}[leftmargin=0pt]
         \positionItem
         {University of Massachusetts Amherst}{Amherst, MA}
-        {Research Assistant, Teaching Assistant}{Aug. 2019 -- present}
+        {Research Assistant}{Aug. 2019 -- present}
         \begin{itemize}
             \positionSubItem{Density Functional Theory:}
-                {Use DFT to model crystal structures and perform band structure analysis, phonon dispersion, magnetic structure relaxation, geometry optimization, and density of states calculations.}
-            \positionSubItem{Crystal Structure Calculation Tools:}
-                {Write and manage software for distributed parallel computations. Includes automatic building and sampling of cluster expansions, DFT calculations, structure analysis, and structure generation.}
+                {Used DFT to model crystal structures and perform band structure analysis, phonon dispersion, magnetic structure relaxation, geometry optimization, and density of states calculations.}
+            \positionSubItem{Crystal Structure Prediction Tools:}
+                {Wrote and managed software for distributed parallel computations. Includes automatic building and sampling of cluster expansions, DFT calculations, structure analysis, and structure generation.}
             \positionSubItem{X-Ray Diffraction:}
                 {Write and use software for automatic integration of multiple-geometry XRD setups for use with dynamic compression at XFEL sources.}
         \end{itemize}
@@ -220,11 +259,12 @@ footskip=3em
 \section{Teaching}
     \vspace{4pt}
     \begin{itemize}[leftmargin=0pt]
-        \teaching{General Chemistry}{Teaching Assistant Supervisor}{Aug. 2022 -- Dec. 2023}
-        \teaching{General Chemistry}{Teaching Assistant}{Aug. 2019 -- May 2022}
-        \teaching{Rensselaer Center for Open Source}{Mentor}{Aug. 2018 -- May 2019}
+        \teaching{CHEM 111 \& CHEM 112: General Chemistry Labs}{Teaching Assistant Supervisor}{Aug. 2022 -- Dec. 2023}
+        \teaching{CHEM 111 \& CHEM 112: General Chemistry Labs}{Teaching Assistant}{Aug. 2019 -- May 2022}
+        \teaching{CSCI 4970: Rensselaer Center for Open Source}{Mentor}{Aug. 2018 -- May 2019}
     \end{itemize}
 
+\vspace{2pt}
 % -------AWARDS--------
 \section{Awards and Honors}
     \vspace{4pt}
@@ -235,7 +275,7 @@ footskip=3em
         \award{Chemistry and Medicine Summer Scholar Program Best Research Group}{Rensselaer Polytechnic Institute, Troy, NY}{July 2014}
     \end{itemize}
 
-
+\vspace{2pt}
 %--------POSTERS--------
 \section{Poster Presentations}
     \vspace{4pt}
@@ -251,7 +291,7 @@ footskip=3em
         \presentation{ENY ACS Undergraduate Research Symposium}{Sienna College, Loudonville, NY}{Apr. 2018}
     \end{itemize}
     
-    
+\vspace{2pt}
 %------TALKS-------
 \section{Talks}
     \vspace{4pt}
@@ -259,13 +299,32 @@ footskip=3em
         \presentation{2023 Northeast Regional Meeting of the American Chemical Society - NERM 2023}{Boston, MA}{June 2023}
         \presentation{Materials Colloquium}{University of Massachusetts Amherst, Amherst, MA}{Nov. 2022}
         \presentation{Rensselaer Center for Open Source}{Rensselaer Polytechnic Institute, Troy, NY}{Apr. 2019}
-        \presentation{HackRPI V}{Rensselaer Polytechnic Institute, Troy, NY}{Mar. 2019}
-        % \presentation{Rensselaer Center for Open Source}{Rensselaer Polytechnic Institute, Troy, NY}{Nov. 2018}
-        % \presentation{Call for Code Hackathon}{Rensselaer Polytechnic Institute, Troy, NY}{Sept. 2018}
+        \presentation{HackRPI V Hackathon}{Rensselaer Polytechnic Institute, Troy, NY}{Mar. 2019}
     \end{itemize}
-    
-\nocite{*}
+
+\vspace{2pt}
+%-----------PROJECTS-----------------
+\section{Projects}
+    \vspace{4pt}
+    \begin{itemize}[leftmargin=*]
+        \project{Walsh Lab Jupyter Hub and Documentation Server}
+            {Linux server running a static documentation site and Jupyter Hub instance over nginx. Provides shared kernels, code, and notebooks to lab members with access to lab networked storage. Integrates with department LDAP user accounts and authentication methods.}
+        \project{cvac - Carbide Cluster Expansion}
+            {Library and programs written in python for automated building and sampling of cluster expansions with the icet package. Code is adapted for parallel distributed computing and capable of interfacing with high-performance computing job scheduling platforms such as IBM Spectrum LSF.}
+        \project{pyMeccano - Multi-geometry XRD Integration}
+            {Python Jupyter notebook to automatically detect and integrate X-Ray diffraction data from multiple-geometry detectors for shock experiments in the MEC hutch at the SLAC linear accelerator. Uses PyFAI as the backend for fast azimuthal integration. \url{https://zenodo.org/records/7995375}}
+        \project{canapy - CASTEP Analysis}
+            {Python scripts and Jupyter notebooks to extract data from a set of CASTEP simulations and construct a convex hull to visualize relationship of formation enthalpies and phase composition under various pressures. Can also read and plot phonon dispersion and density of states calculations.}
+        \project{RPI Shuttle Tracker}
+            {Web application under the RPI student senate’s Web Technologies Group that shows the location of campus shuttles along with their routes and stops. Written in Go and the MEAN stack. \url{https://shuttles.rpi.edu/}}
+        \project{Hash Table Image Comparison}
+            {Lightweight program written in C++ that takes a set of images and compares them to each other. Comparison makes use of hash tables for fast comparison and reports percent match as well as highlights the matching area of the images.}
+    \end{itemize}
+
+
+%-------PUBLICATIONS--------
 \section{Publications}
+\nocite{*}
 \printbibliography[heading=none]
 
 \end{document}
